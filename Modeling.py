@@ -69,15 +69,18 @@ features.head()
 # check datatypes
 features.dtypes
 
+#BookingSource variable
+Conditions_count = data['Conditions'].value_counts().rename_axis('unique_values').reset_index(name='counts')
+Conditions_count
 
-
-
-
-
+feature1 = features
 
 # ## Feature engineering
 
-
+# BookingSource 
+dummies = pd.get_dummies(features1['BookingSource'], drop_first=False)
+feature1 = feature1.join(dummies)
+feature1 = feature1.drop('room_type', axis= 1)
 
 
 
